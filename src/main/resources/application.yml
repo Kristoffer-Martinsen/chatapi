@@ -1,15 +1,8 @@
-spring:
-  application:
-    name: chatapi
-  jackson:
-    property-naming-strategy: SNAKE_CASE
-  flyway:
-    locations: classpath:/db/migration
-    schemas: chatapi
-    baselineOnMigrate: true
-    enabled: true
-  datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/chatapi?currentSchema=chatapi
-    username: postgres
-    password: ${DATABASE_PASSWORD}
+spring.config.import: optional:secrets.properties
+spring.application.name: chatapi
+spring.jackson.property-naming-strategy: SNAKE_CASE
+spring.flyway.locations: classpath:/db/migration
+spring.flyway.schemas: chatapi
+spring.flyway.baselineOnMigrate: true
+spring.flyway.enabled: true
+spring.datasource.driverClassName: org.postgresql.Driver
